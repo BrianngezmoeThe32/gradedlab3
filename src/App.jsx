@@ -11,7 +11,7 @@ function App() {
     const fetchProducts = async () => {
       try {
         setLoading(true);
-        const res = await fetch("https://fakestoreapi.com/products");
+        const res = await fetch("https://fakestoreapi.com/products"); 
         if (!res.ok) throw new Error("Failed to fetch");
         const data = await res.json();
         setProducts(data);
@@ -51,7 +51,12 @@ function App() {
           <div key={product.id} className="product-card">
             <img src={product.image} alt={product.title} />
             <h3>{product.title}</h3>
-            <p>${product.price}</p>
+            <p className="description">{product.description}</p>
+            <p className="price">${product.price}</p>
+            <p> ⭐ {product.rating?.rate} ({product.rating?.count} reviews)</p>
+            
+            
+
           </div>
         ))}
       </div>
